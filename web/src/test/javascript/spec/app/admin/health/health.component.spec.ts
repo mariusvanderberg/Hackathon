@@ -10,16 +10,14 @@ describe('Component Tests', () => {
         let fixture: ComponentFixture<JhiHealthCheckComponent>;
         let service: JhiHealthService;
 
-        beforeEach(
-            async(() => {
-                TestBed.configureTestingModule({
-                    imports: [FoodsourceTestModule],
-                    declarations: [JhiHealthCheckComponent]
-                })
-                    .overrideTemplate(JhiHealthCheckComponent, '')
-                    .compileComponents();
+        beforeEach(async(() => {
+            TestBed.configureTestingModule({
+                imports: [FoodsourceTestModule],
+                declarations: [JhiHealthCheckComponent]
             })
-        );
+                .overrideTemplate(JhiHealthCheckComponent, '')
+                .compileComponents();
+        }));
 
         beforeEach(() => {
             fixture = TestBed.createComponent(JhiHealthCheckComponent);
