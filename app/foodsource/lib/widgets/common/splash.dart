@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:foodsource/pages/login.dart';
+import 'package:foodsource/widgets/common/logo.dart';
 
 class SplashScreen extends StatefulWidget {
   SplashScreen();
@@ -18,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
             () => Navigator.pushReplacement(
             context,
             new MaterialPageRoute(
-                builder: (context) => LoginPage(title: "Mobile ERP"))));
+                builder: (context) => LoginPage(title: "FoodSource"))));
   }
 
   @override
@@ -36,8 +37,8 @@ class _SplashScreenState extends State<SplashScreen> {
             children: <Widget>[
               Expanded(
                 flex: 2,
-                //child: new FieldCheckTextLogo(),
-                child: new Text('logo here')
+                child: new AppTextLogo(),
+                //child: new Text('logo here')
               ),
               Expanded(
                 flex: 1,
