@@ -1,0 +1,119 @@
+entity Supplier {
+	ID Integer,
+    Name String,
+    DateCreated LocalDate,
+    Active Integer,
+    RegNumber String
+}
+entity SupplierType{
+    ID Integer,
+    Supplier Integer,
+    Redistributor Integer
+}
+
+entity SupplierStock{
+  ID Integer,
+  Amount Integer
+}
+
+entity Consumer {
+	ID Integer,
+    Name String,
+    DateCreated LocalDate,
+    Active Integer
+}
+
+// an ignored comment
+/** not an ignored comment */
+entity Address {
+	ID Integer,
+	Street1 String,
+	Street2 String,
+	Suburb String,
+    City String,
+    PostalCode String,
+    Country String 
+}
+
+entity ContactInfo {
+	ID Integer,
+    Cellno Integer,
+    Telno Integer,
+    Faxno Integer
+}
+entity StockType {
+	ID Integer ,
+    Type String,
+    Variation String,
+    Fruit Integer,
+    Vegtable Integer
+
+}
+entity Stock {
+ 	ID Integer,
+    Description String
+}
+entity StockStatus {
+	ID Integer,
+    ColdStorage Integer,
+    RoomTemp Integer
+}
+/**
+ * Task entity.
+ * @author The JHipster team.
+ */
+entity PricesPerStock {
+	ID Integer,
+	Price Float,
+    Unit Integer
+}
+
+entity Adverts {
+	ID Integer,
+	Text String
+}
+
+entity AdvertedPrices {
+	ID Integer,
+	PricesPerStock Float,
+	Units Integer
+}
+
+relationship OneToMany {
+	Supplier{address} to Address,
+    Supplier{contactinfo} to ContactInfo
+}
+relationship OneToMany {
+	Consumer{contactinfo} to ContactInfo,
+    Consumer{address} to Address
+}
+relationship OneToMany {
+	Supplier{supplierstock} to SupplierStock,
+    Supplier{advert} to Adverts
+}
+relationship OneToOne {
+	Supplier{supplierType} to SupplierType
+}
+
+relationship OneToMany {
+	Adverts{advertedprices} to AdvertedPrices,
+    AdvertedPrices{pricesperstock} to PricesPerStock
+}
+
+relationship OneToMany {
+	Stock(pricesperstock) to PricesPerStock
+}
+
+relationship OneToOne {
+	Stock{stocktype} to StockType,
+    Stock{stockstatus} to StockStatus
+}
+relationship OneToMany {
+	SupplierStock{stock} to Stock
+}
+
+// Set service options to all except few
+service all with serviceImpl 
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
