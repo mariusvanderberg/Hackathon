@@ -18,7 +18,7 @@ class LoginPageState extends State<LoginPage>
   void initState() {
     super.initState();
     _iconAnimationController = new AnimationController(
-        vsync: this, duration: new Duration(milliseconds: 500));
+        vsync: this, duration: new Duration(milliseconds: 1000));
     _iconAnimation = new CurvedAnimation(
       parent: _iconAnimationController,
       curve: Curves.bounceOut,
@@ -29,7 +29,6 @@ class LoginPageState extends State<LoginPage>
 
   @override
   Widget build(BuildContext context) {
-
     return new Scaffold(
       backgroundColor: Colors.white,
       body: new Stack(fit: StackFit.expand, children: <Widget>[
@@ -45,15 +44,16 @@ class LoginPageState extends State<LoginPage>
               inputDecorationTheme: new InputDecorationTheme(
                 // hintStyle: new TextStyle(color: Colors.blue, fontSize: 20.0),
                 labelStyle:
-                new TextStyle(color: Colors.tealAccent, fontSize: 25.0),
+                    new TextStyle(color: Colors.tealAccent, fontSize: 25.0),
               )),
           isMaterialAppTheme: true,
           child: new Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              new FlutterLogo(
-                size: _iconAnimation.value * 140.0,
-              ),
+              new Image(
+                  image: new AssetImage("assets/images/apple.png"),
+                  width: _iconAnimation.value * 140.0,
+                  height: _iconAnimation.value * 140.0),
               new Container(
                 padding: const EdgeInsets.all(40.0),
                 child: new Form(

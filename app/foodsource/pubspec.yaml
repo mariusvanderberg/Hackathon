@@ -41,6 +41,7 @@ flutter:
   assets:
     - assets/images/AppBackground.png
     - assets/images/App.png
+    - assets/images/apple.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
