@@ -1,3 +1,4 @@
+import 'package:foodsource/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:foodsource/pages/profile/profiledetails/footer/articles_showcase.dart';
 import 'package:foodsource/pages/profile/profiledetails/footer/portfolio_showcase.dart';
@@ -6,7 +7,7 @@ import 'package:foodsource/pages/profile/profiledetails/footer/skills_showcase.d
 class ProfileShowcase extends StatefulWidget {
   ProfileShowcase(this.profile);
 
-  final String profile;
+  final User profile;
 
   @override
   _ProfileShowcaseState createState() => new _ProfileShowcaseState();

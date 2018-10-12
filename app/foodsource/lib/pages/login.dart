@@ -138,7 +138,7 @@ class LoginPageState extends State<LoginPage>
   }
 
   void _login() async {
-    Session().employee = 'Marius';
+    //Session().employee = 'Marius';
     Navigator.pushReplacement(context,
         new MaterialPageRoute(builder: (context) => new LandingPage()));
   }

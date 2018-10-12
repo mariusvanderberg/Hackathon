@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:foodsource/models/user.dart';
 
 class ProfileDetailBody extends StatelessWidget {
   ProfileDetailBody(this.user);
-  final String user;
+  final User user;
 
   Widget _buildLocationInfo(TextTheme textTheme) {
     return new Row(
@@ -47,7 +48,7 @@ class ProfileDetailBody extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         new Text(
-          user,
+          user.firstName,
           style: textTheme.headline.copyWith(color: Colors.white),
         ),
         new Padding(

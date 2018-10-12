@@ -1,3 +1,4 @@
+import 'package:foodsource/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:foodsource/pages/profile/profiledetails/header/diagonally_cut_colored_image.dart';
 import 'package:meta/meta.dart';
@@ -10,7 +11,7 @@ class ProfileDetailHeader extends StatelessWidget {
     @required this.avatarTag,
   });
 
-  final String user;
+  final User user;
   final Object avatarTag;
 
   Widget _buildDiagonalImageBackground(BuildContext context) {
@@ -31,7 +32,7 @@ class ProfileDetailHeader extends StatelessWidget {
     return new Hero(
       tag: avatarTag,
       child: new CircleAvatar(
-        backgroundImage: new AssetImage('assets/images/goku.png'),
+        backgroundImage: user.imageUrl != null && user.imageUrl != "" ? new NetworkImage(user.imageUrl) : new AssetImage(user.avatar),
         radius: 50.0,
       ),
     );
