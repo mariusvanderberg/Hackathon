@@ -57,9 +57,15 @@ class AboutState extends State<About> {
               ),
               _createLabel("Version: $_version\nDatabase version: $_dbVersion",
                   maxLines: 2),
+              new Padding(
+                padding: EdgeInsets.only(top: 10.0),
+              ),
               new AppTextLogo(),
+              new Padding(
+                padding: EdgeInsets.only(top: 10.0),
+              ),
               _createLabel(
-                  "© ${DateTime.now().year.toString()} Xpedia Applications.\nAll rights reserved.",
+                  "© ${DateTime.now().year.toString()} FoodSource Applications.\nAll rights reserved.",
                   maxLines: 2),
             ],
           )

@@ -24,7 +24,7 @@ class _AnimatedFabState extends State<AnimatedFab>
     super.initState();
     _animationController = new AnimationController(
         vsync: this, duration: Duration(milliseconds: 200));
-    _colorAnimation = new ColorTween(begin: Colors.pink, end: Colors.pink[800])
+    _colorAnimation = new ColorTween(begin: Colors.teal, end: Colors.teal[800])
         .animate(_animationController);
   }
 
@@ -93,7 +93,7 @@ class _AnimatedFabState extends State<AnimatedFab>
     return new Container(
       height: size,
       width: size,
-      decoration: new BoxDecoration(shape: BoxShape.circle, color: Colors.pink),
+      decoration: new BoxDecoration(shape: BoxShape.circle, color: Colors.teal),
     );
   }
 

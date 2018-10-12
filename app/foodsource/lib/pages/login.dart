@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:foodsource/common/session.dart';
+import 'package:foodsource/models/company.dart';
+import 'package:foodsource/models/user.dart';
+import 'package:foodsource/models/employee.dart';
 import 'package:foodsource/pages/initiator.dart';
 import 'package:foodsource/pages/landing.dart';
 import 'package:foodsource/widgets/common/theme.dart';
@@ -18,6 +21,8 @@ class LoginPageState extends State<LoginPage>
   Animation<double> _iconAnimation;
   AnimationController _iconAnimationController;
   double _size = 140.0;
+  var emailController = new TextEditingController(text: 'admin');
+  var passwordController = new TextEditingController(text: 'admin');
 
   @override
   void initState() {
@@ -72,6 +77,23 @@ class LoginPageState extends State<LoginPage>
       padding: const EdgeInsets.only(top: 60.0),
     );
 
+    final email = new TextFormField(
+      controller: this.emailController,
+      decoration: new InputDecoration(
+          labelText: "Enter Email",
+          fillColor: Colors.white),
+      keyboardType: TextInputType.emailAddress,
+    );
+
+    final password = new TextFormField(
+      controller: this.passwordController,
+      decoration: new InputDecoration(
+        labelText: "Enter Password",
+      ),
+      obscureText: true,
+      keyboardType: TextInputType.text,
+    );
+
     return new Scaffold(
       backgroundColor: Colors.white,
       body: new Stack(fit: StackFit.expand, children: <Widget>[
@@ -108,19 +130,8 @@ class LoginPageState extends State<LoginPage>
                           child: new Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: <Widget>[
-                              new TextFormField(
-                                decoration: new InputDecoration(
-                                    labelText: "Enter Email",
-                                    fillColor: Colors.white),
-                                keyboardType: TextInputType.emailAddress,
-                              ),
-                              new TextFormField(
-                                decoration: new InputDecoration(
-                                  labelText: "Enter Password",
-                                ),
-                                obscureText: true,
-                                keyboardType: TextInputType.text,
-                              ),
+                              email,
+                              password,
                               spacer,
                               loginButton,
                               forgotLabel
@@ -138,7 +149,29 @@ class LoginPageState extends State<LoginPage>
   }
 
   void _login() async {
-    //Session().employee = 'Marius';
+    //hard code employee and employee.user
+    User user = new User();
+    user.accessToken = '23423423';
+    user.firstName = 'Susan';
+    user.lastName = 'Boyle';
+    user.avatar = 'assets/images/goku.png';
+    user.email = this.emailController.text;
+    user.localPassword = this.passwordController.text;
+
+    Company company = new Company();
+    company.id = '112';
+    company.name = 'Greenfields Farm';
+    company.description = 'Apple Farm';
+
+    Employee employee = new Employee();
+    employee.user = user;
+    employee.displayName = user.firstName + ' ' + user.lastName;
+    employee.company = company;
+    employee.mobileNumber = "0786567730";
+
+    //Session().employee.displayName = "Susan Boyle";
+    Session().employee = employee;
+
     Navigator.pushReplacement(context,
         new MaterialPageRoute(builder: (context) => new LandingPage()));
   }
