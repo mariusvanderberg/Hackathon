@@ -1,0 +1,70 @@
+<div>
+    <h2 id="page-heading">
+        <span>Prices Per Stocks</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-prices-per-stock" [routerLink]="['/prices-per-stock/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Prices Per Stock
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="pricesPerStocks">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="price"><span>Price</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="unit"><span>Unit</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="stock.id"><span>Stock</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let pricesPerStock of pricesPerStocks ;trackBy: trackId">
+                <td><a [routerLink]="['/prices-per-stock', pricesPerStock.id, 'view' ]">{{pricesPerStock.id}}</a></td>
+                <td>{{pricesPerStock.price}}</td>
+                <td>{{pricesPerStock.unit}}</td>
+                <td>
+                    <div *ngIf="pricesPerStock.stock">
+                        <a [routerLink]="['../stock', pricesPerStock.stock?.id, 'view' ]" >{{pricesPerStock.stock?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/prices-per-stock', pricesPerStock.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/prices-per-stock', pricesPerStock.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'prices-per-stock/'+ pricesPerStock.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="pricesPerStocks && pricesPerStocks.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

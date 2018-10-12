@@ -1,0 +1,67 @@
+{
+    "name": "Stock",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "amount",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "measure",
+            "fieldType": "StockMeasurement",
+            "fieldValues": "KG,G"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "StockStatus",
+            "fieldValues": "ColdStorage,RoomTemp"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "stocktype",
+            "otherEntityName": "stockType",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "stock"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "pricesperstock",
+            "otherEntityName": "pricesPerStock",
+            "otherEntityRelationshipName": "stock"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "stock",
+            "relationshipName": "adverts",
+            "otherEntityName": "adverts",
+            "otherEntityField": "name",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "supplier",
+            "otherEntityName": "supplier",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "stock"
+        }
+    ],
+    "changelogDate": "20181012095222",
+    "entityTableName": "stock",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
