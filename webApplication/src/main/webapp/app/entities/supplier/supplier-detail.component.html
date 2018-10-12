@@ -1,0 +1,57 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="supplier">
+            <h2><span>Supplier</span> {{supplier.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{supplier.name}}</span>
+                </dd>
+                <dt><span>Surname</span></dt>
+                <dd>
+                    <span>{{supplier.surname}}</span>
+                </dd>
+                <dt><span>Reg Number</span></dt>
+                <dd>
+                    <span>{{supplier.regNumber}}</span>
+                </dd>
+                <dt><span>Active</span></dt>
+                <dd>
+                    <span>{{supplier.active}}</span>
+                </dd>
+                <dt><span>Contact Info</span></dt>
+                <dd>
+                    <div *ngIf="supplier.contactInfo">
+                        <a [routerLink]="['/contact-info', supplier.contactInfo?.id, 'view']">{{supplier.contactInfo?.name}}</a>
+                    </div>
+                </dd>
+                <dt><span>Adverts</span></dt>
+                <dd>
+                    <span *ngFor="let adverts of supplier.adverts; let last = last">
+                        <a [routerLink]="['/adverts', adverts?.id, 'view' ]">{{adverts.name}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span>Stock</span></dt>
+                <dd>
+                    <span *ngFor="let stock of supplier.stocks; let last = last">
+                        <a [routerLink]="['/stock', stock?.id, 'view' ]">{{stock.name}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/supplier', supplier.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

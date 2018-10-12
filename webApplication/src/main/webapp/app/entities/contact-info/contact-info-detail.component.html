@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="contactInfo">
+            <h2><span>Contact Info</span> {{contactInfo.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{contactInfo.name}}</span>
+                </dd>
+                <dt><span>Street 1</span></dt>
+                <dd>
+                    <span>{{contactInfo.street1}}</span>
+                </dd>
+                <dt><span>Street 2</span></dt>
+                <dd>
+                    <span>{{contactInfo.street2}}</span>
+                </dd>
+                <dt><span>Suburb</span></dt>
+                <dd>
+                    <span>{{contactInfo.suburb}}</span>
+                </dd>
+                <dt><span>City</span></dt>
+                <dd>
+                    <span>{{contactInfo.city}}</span>
+                </dd>
+                <dt><span>Postal Code</span></dt>
+                <dd>
+                    <span>{{contactInfo.postalCode}}</span>
+                </dd>
+                <dt><span>Country</span></dt>
+                <dd>
+                    <span>{{contactInfo.country}}</span>
+                </dd>
+                <dt><span>Emailaddress</span></dt>
+                <dd>
+                    <span>{{contactInfo.emailaddress}}</span>
+                </dd>
+                <dt><span>Cellno</span></dt>
+                <dd>
+                    <span>{{contactInfo.cellno}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/contact-info', contactInfo.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
