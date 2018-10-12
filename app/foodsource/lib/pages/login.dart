@@ -79,7 +79,7 @@ class LoginPageState extends State<LoginPage>
           image: new AssetImage("assets/images/App.png"),
           fit: BoxFit.cover,
           colorBlendMode: BlendMode.darken,
-          color: Colors.black54,
+          color: Colors.black87,
         ),
         new Theme(
             data: new ThemeData(
@@ -87,7 +87,7 @@ class LoginPageState extends State<LoginPage>
                 inputDecorationTheme: new InputDecorationTheme(
                   // hintStyle: new TextStyle(color: Colors.blue, fontSize: 20.0),
                   labelStyle:
-                      new TextStyle(color: Colors.tealAccent, fontSize: 25.0),
+                      new TextStyle(color: Colors.white, fontSize: 25.0),
                 )),
             isMaterialAppTheme: true,
             child: Center(
