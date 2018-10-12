@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:foodsource/common/session.dart';
+import 'package:foodsource/pages/initiator.dart';
+import 'package:foodsource/pages/landing.dart';
 import 'package:foodsource/widgets/common/theme.dart';
 
 class LoginPage extends StatefulWidget {
@@ -14,6 +17,7 @@ class LoginPageState extends State<LoginPage>
     with SingleTickerProviderStateMixin {
   Animation<double> _iconAnimation;
   AnimationController _iconAnimationController;
+  double _size = 140.0;
 
   @override
   void initState() {
@@ -75,7 +79,7 @@ class LoginPageState extends State<LoginPage>
           image: new AssetImage("assets/images/App.png"),
           fit: BoxFit.cover,
           colorBlendMode: BlendMode.darken,
-          color: Colors.black87,
+          color: Colors.black54,
         ),
         new Theme(
             data: new ThemeData(
@@ -95,7 +99,7 @@ class LoginPageState extends State<LoginPage>
                     children: <Widget>[
                       new Image(
                           image: new AssetImage("assets/images/apple.png"),
-                          width: _iconAnimation.value * 140.0,
+                          width: _iconAnimation.value * _size,
                           height: _iconAnimation.value * 140.0),
                       new Container(
                         padding: const EdgeInsets.all(40.0),
@@ -134,7 +138,14 @@ class LoginPageState extends State<LoginPage>
   }
 
   void _login() async {
-    Navigator.pushReplacement(
-        context, new MaterialPageRoute(builder: (context) => new LoginPage()));
+    Session().employee = 'Marius';
+    Navigator.pushReplacement(context,
+        new MaterialPageRoute(builder: (context) => new LandingPage()));
+  }
+
+  @override
+  void dispose() {
+    _iconAnimationController.dispose();
+    super.dispose();
   }
 }

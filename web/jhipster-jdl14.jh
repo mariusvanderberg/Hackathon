@@ -1,0 +1,107 @@
+entity Supplier {
+    name String,
+    regNumber String
+    active Boolean,
+}
+entity SupplierType{
+    name String,
+    redistributor Boolean
+}
+
+entity SupplierStock{
+ 	amount Integer
+}
+
+entity Consumer {
+    name String,
+    active Boolean
+}
+
+// an ignored comment
+/** not an ignored comment */
+entity Address {
+	name String,
+	street1 String,
+	street2 String,
+	suburb String,
+    city String,
+    postalCode String,
+    country String 
+}
+
+entity ContactInfo {
+    cellno Integer,
+    telno Integer,
+    faxno Integer
+}
+entity StockType {
+    type String,
+    variation String,
+    fruit Boolean,
+    vegtable Boolean
+}
+
+entity Stock {
+    name String,
+    description String
+}
+
+entity StockStatus {
+    coldStorage Boolean,
+    roomTemp Integer
+}
+
+/**
+ * Task entity.
+ * @author The JHipster team.
+ */
+entity PricesPerStock {
+	price Float,
+    unit String
+}
+
+entity Adverts {
+	text String
+}
+
+entity AdvertedPrices {
+	pricesPerStock Float,
+	units Integer
+}
+
+relationship OneToMany {
+	Supplier{supplierstock(name)} to SupplierStock,
+	Stock{SupplierStock(name)} to SupplierStock,
+    Supplier{advert} to Adverts
+}
+relationship OneToOne {
+	Supplier{supplierType(name)} to SupplierType,
+	Supplier{address(name)} to Address,
+    Consumer{address(name)} to Address,
+	Supplier{contactinfo(cellno)} to ContactInfo,
+    Consumer{contactinfo(cellno)} to ContactInfo
+}
+
+relationship OneToMany {
+	Adverts{advertedprices} to AdvertedPrices,
+    AdvertedPrices{pricesperstock} to PricesPerStock
+}
+
+relationship OneToMany {
+	Stock{pricesperstock} to PricesPerStock
+}
+
+relationship OneToOne {
+	Stock{stocktype(type)} to StockType,
+    Stock{stockstatus} to StockStatus
+}
+
+paginate Supplier, SupplierType, SupplierStock with pagination
+paginate Consumer, Address, ContactInfo with pagination
+paginate StockType, Stock, StockStatus with pagination
+paginate PricesPerStock, Adverts, AdvertedPrices with pagination
+// Set service options to all except few
+service all with serviceImpl 
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
