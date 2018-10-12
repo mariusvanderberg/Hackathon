@@ -1,17 +1,18 @@
-//import 'package:camera/camera.dart';
-//import 'package:merp/models/employee.dart';
-//import 'package:location/location.dart' as geoLocation;
+import 'package:camera/camera.dart';
+import 'package:foodsource/models/employee.dart';
+import 'package:location/location.dart' as geoLocation;
 
 class Session {
   String accessToken = '';
-  String _employee;
+  Employee _employee;
+  List<CameraDescription> cameras;
   Map<String, double> _lastLocation;
 
-  String get employee => _employee;
+  Employee get employee => _employee;
 
-  set employee(String employee) {
+  set employee(Employee employee) {
     if (employee != null) {
-      //employee.user.accessToken = accessToken;
+      employee.user.accessToken = accessToken;
     }
     _employee = employee;
   }
@@ -31,11 +32,15 @@ class Session {
   }
 
   Session._internal() {
-    //if (cameras == null) availableCameras().then((value) => loadCamera(value));
+    if (cameras == null) availableCameras().then((value) => loadCamera(value));
   }
 
   void clearData() {
     accessToken = '';
     employee = null;
+  }
+
+  loadCamera(value) {
+    cameras = value;
   }
 }

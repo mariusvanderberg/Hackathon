@@ -29,7 +29,7 @@ class LandingPage extends StatefulWidget {
 class LandingPageState extends State<LandingPage> {
   DrawerItem _selectedDrawerItem;
   static var employee = Session().employee;
-  var user = employee;
+  var user = employee.user;
 
   _onSelectItem(DrawerItem d) {
     switch (d.drawerItemType) {
@@ -41,7 +41,7 @@ class LandingPageState extends State<LandingPage> {
             (Route<dynamic> route) => false);
         break;
       case DrawerItemEnum.PROFILE:
-        _navigateTo(new ProfileDetails(Session().employee,
+        _navigateTo(new ProfileDetails(Session().employee.user,
             avatarTag: 'assets/images/goku.png'));
         break;
       case DrawerItemEnum.ABOUT:
@@ -67,7 +67,7 @@ class LandingPageState extends State<LandingPage> {
         "Profile",
         Icons.perm_identity,
         DrawerItemEnum.PROFILE,
-        new ProfileDetails(Session().employee,
+        new ProfileDetails(Session().employee.user,
             avatarTag: 'assets/images/goku.png')),
     new DrawerItem(
         "About", Icons.info_outline, DrawerItemEnum.ABOUT, new About()),
@@ -127,8 +127,8 @@ class LandingPageState extends State<LandingPage> {
                   ],
                 ),
               ),
-              accountName: new Text(employee),
-              accountEmail: new Text(user),
+              accountName: new Text(employee.displayName),
+              accountEmail: new Text(user.email),
               currentAccountPicture: new CircleAvatar(
                 backgroundImage: new AssetImage('assets/images/goku.png'),
               ),

@@ -1,4 +1,5 @@
 import 'package:foodsource/common/colors.dart';
+import 'package:foodsource/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:foodsource/pages/profile/profiledetails/header/profile_detail_header.dart';
 import 'package:meta/meta.dart';
@@ -10,7 +11,7 @@ class ProfileDetails extends StatefulWidget {
       : super(key: key);
 
   final String title;
-  final String user;
+  final User user;
   final Object avatarTag;
 
   @override
