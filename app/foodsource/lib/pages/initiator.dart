@@ -1,9 +1,12 @@
 import 'package:foodsource/common/diagonal_clipper.dart';
+import 'package:foodsource/common/session.dart';
 import 'package:foodsource/pages/tasks/animated_fab.dart';
 import 'package:foodsource/pages/tasks/initial_tasks.dart';
 import 'package:foodsource/pages/tasks/list_model.dart';
 import 'package:foodsource/pages/tasks/task_row.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:foodsource/widgets/common/theme.dart';
 
 class MainPage extends StatefulWidget {
   MainPage({Key key}) : super(key: key);
@@ -19,6 +22,7 @@ class _MainPageState extends State<MainPage> {
   ListModel listModel;
   bool showOnlyCompleted = false;
   bool showOptions = true;
+  var titleA = 'Marketplace';
 
   @override
   void initState() {
@@ -72,8 +76,8 @@ class _MainPageState extends State<MainPage> {
           'assets/images/App.png',
           fit: BoxFit.cover,
           height: _imageHeight,
-          colorBlendMode: BlendMode.srcOver,
-          color: new Color.fromARGB(120, 20, 10, 40),
+          colorBlendMode: BlendMode.darken,
+          color: Colors.black87,
         ),
       ),
     );
@@ -116,7 +120,7 @@ class _MainPageState extends State<MainPage> {
           new CircleAvatar(
             minRadius: 28.0,
             maxRadius: 28.0,
-            backgroundImage: new AssetImage('assets/images/goku.png'),
+            backgroundImage: new AssetImage('assets/images/susan.png'),
           ),
           new Padding(
             padding: const EdgeInsets.only(left: 16.0),
@@ -125,14 +129,14 @@ class _MainPageState extends State<MainPage> {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 new Text(
-                  'Marius van der Berg',
+                  Session().employee.displayName,
                   style: new TextStyle(
                       fontSize: 26.0,
                       color: Colors.white,
                       fontWeight: FontWeight.w400),
                 ),
                 new Text(
-                  'Developer',
+                  'Redistributer',
                   style: new TextStyle(
                       fontSize: 14.0,
                       color: Colors.white,
@@ -147,6 +151,7 @@ class _MainPageState extends State<MainPage> {
   }
 
   Widget _buildBottomPart() {
+<<<<<<< .mine
     var list = new Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -163,9 +168,160 @@ class _MainPageState extends State<MainPage> {
       ],
     );
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=======
+    var list = new Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        _buildMyTasksHeader(),
+        _buildTasksList(),
+      ],
+    );
+
+    var options = new Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        new Padding(
+          padding: EdgeInsets.only(top: 10.0),
+        ),
+        //new FlatButton(onPressed: null, child: new Text('Show market')),
+        //new FlatButton(onPressed: null, child: new Text('Sell')),
+        Container(
+          //width: 120.0,
+          height: 50.0,
+          child: RaisedButton(
+              shape: new RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(10.0)),
+              elevation: 2.0,
+              color: Colors.green,
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  new Icon(
+                    FontAwesomeIcons.shoppingCart,
+                    color:  Colors.white,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 10.0),
+                  ),
+                  Text('Show market', style: buttonTextStyle)
+                ],
+              ),
+              onPressed: () {
+                setState(() {
+                  titleA = 'Marketplace';
+                  showOptions = false;
+                });
+              })
+        ),
+        new Padding(
+          padding: EdgeInsets.only(top: 10.0),
+        ),
+        Container(
+          //width: 120.0,
+          height: 50.0,
+          child: RaisedButton(
+              shape: new RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(10.0)),
+              elevation: 2.0,
+              color: Colors.green,
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  new Icon(
+                    FontAwesomeIcons.moneyBillWave,
+                    color:  Colors.white,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 10.0),
+                  ),
+                  Text('Sell', style: buttonTextStyle)
+                ],
+              ),
+              onPressed: () {
+                setState(() {
+                  titleA = 'Selling items';
+                  showOptions = false;
+                });
+              })
+        )
+      ],
+    );
+
+>>>>>>> .theirs
     return new Padding(
+<<<<<<< .mine
       padding: new EdgeInsets.only(top: _imageHeight),
       child: showOptions ? options : list
+=======
+        padding: new EdgeInsets.only(top: _imageHeight),
+        child: showOptions ? options : list
+>>>>>>> .theirs
     );
   }
 
@@ -191,11 +347,11 @@ class _MainPageState extends State<MainPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           new Text(
-            'My Tasks',
+            titleA,
             style: new TextStyle(fontSize: 34.0),
           ),
           new Text(
-            'FEBRUARY 8, 2015',
+            'OCTOBER 12, 2018',
             style: new TextStyle(color: Colors.grey, fontSize: 12.0),
           ),
         ],

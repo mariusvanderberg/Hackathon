@@ -1,24 +1,24 @@
+import 'package:foodsource/common/colors.dart';
 import 'package:foodsource/common/drawer.dart';
 import 'package:foodsource/common/session.dart';
-import 'package:foodsource/pages/about.dart';
-import 'package:foodsource/pages/decision.dart';
-import 'package:foodsource/pages/initiator.dart';
-import 'package:foodsource/pages/profile/profile.dart';
-import 'package:foodsource/enums/drawer_item_enum.dart';
-import 'package:foodsource/pages/login.dart';
-import 'package:flutter/foundation.dart';
+import 'package:foodsource/constants/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:foodsource/enums/drawer_item_enum.dart';
+import 'package:foodsource/pages/about.dart';
+import 'package:foodsource/pages/choice.dart';
+import 'package:foodsource/pages/login.dart';
+import 'package:foodsource/pages/profile/profile.dart';
+import 'package:foodsource/widgets/common/logo.dart';
 
-class LandingPage extends StatefulWidget {
+class Decision extends StatefulWidget {
+  Decision({Key key, this.title}) : super(key: key);
   final String title;
 
-  LandingPage({Key key, this.title}) : super(key: key);
-
   @override
-  LandingPageState createState() => new LandingPageState();
+  DecisionState createState() => new DecisionState();
 }
 
-class LandingPageState extends State<LandingPage> {
+class DecisionState extends State<Decision> {
   DrawerItem _selectedDrawerItem;
   static var employee = Session().employee;
   var user = employee.user;
@@ -30,7 +30,7 @@ class LandingPageState extends State<LandingPage> {
         Navigator.of(context).pushAndRemoveUntil(
             new MaterialPageRoute(
                 builder: (context) => new LoginPage(title: widget.title)),
-            (Route<dynamic> route) => false);
+                (Route<dynamic> route) => false);
         break;
       case DrawerItemEnum.PROFILE:
         _navigateTo(new ProfileDetails(Session().employee.user,
@@ -54,7 +54,7 @@ class LandingPageState extends State<LandingPage> {
 
   var drawerItems = [
     new DrawerItem(
-        "Welcome, ${employee.displayName}", Icons.work, DrawerItemEnum.HOME, MainPage()),
+        "Welcome, $employee", Icons.work, DrawerItemEnum.HOME, new Choice()),
     new DrawerItem(
         "Profile",
         Icons.perm_identity,
@@ -66,6 +66,7 @@ class LandingPageState extends State<LandingPage> {
     new DrawerItem(
         "Log out", Icons.exit_to_app, DrawerItemEnum.LOGOUT, new LoginPage())
   ];
+
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +89,6 @@ class LandingPageState extends State<LandingPage> {
         new Divider(),
       );
     }
-
     return new Scaffold(
       drawer: new Drawer(
         child: new ListView(
