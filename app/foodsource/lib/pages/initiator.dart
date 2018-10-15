@@ -18,6 +18,7 @@ class _MainPageState extends State<MainPage> {
   final double _imageHeight = 256.0;
   ListModel listModel;
   bool showOnlyCompleted = false;
+  bool showOptions = true;
 
   @override
   void initState() {
@@ -146,15 +147,25 @@ class _MainPageState extends State<MainPage> {
   }
 
   Widget _buildBottomPart() {
+    var list = new Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        _buildMyTasksHeader(),
+        _buildTasksList(),
+      ],
+    );
+
+    var options = new Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        new FlatButton(onPressed: null, child: new Text('Show market')),
+        new FlatButton(onPressed: null, child: new Text('Sell')),
+      ],
+    );
+
     return new Padding(
       padding: new EdgeInsets.only(top: _imageHeight),
-      child: new Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          _buildMyTasksHeader(),
-          _buildTasksList(),
-        ],
-      ),
+      child: showOptions ? options : list
     );
   }
 
