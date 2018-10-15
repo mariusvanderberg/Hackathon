@@ -151,88 +151,6 @@ class _MainPageState extends State<MainPage> {
   }
 
   Widget _buildBottomPart() {
-<<<<<<< .mine
-    var list = new Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        _buildMyTasksHeader(),
-        _buildTasksList(),
-      ],
-    );
-
-    var options = new Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        new FlatButton(onPressed: null, child: new Text('Show market')),
-        new FlatButton(onPressed: null, child: new Text('Sell')),
-      ],
-    );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
     var list = new Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -313,15 +231,9 @@ class _MainPageState extends State<MainPage> {
       ],
     );
 
->>>>>>> .theirs
     return new Padding(
-<<<<<<< .mine
       padding: new EdgeInsets.only(top: _imageHeight),
       child: showOptions ? options : list
-=======
-        padding: new EdgeInsets.only(top: _imageHeight),
-        child: showOptions ? options : list
->>>>>>> .theirs
     );
   }
 
