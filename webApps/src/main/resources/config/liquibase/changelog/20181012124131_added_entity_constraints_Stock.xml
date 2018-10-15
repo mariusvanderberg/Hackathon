@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Stock.
+    -->
+    <changeSet id="20181012124131-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="stocktype_id"
+                                 baseTableName="stock"
+                                 constraintName="fk_stock_stocktype_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="stock_type"/>
+
+        <addForeignKeyConstraint baseColumnNames="stocks_id"
+                                 baseTableName="stock_adverts"
+                                 constraintName="fk_stock_adverts_stocks_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="stock"/>
+        <addForeignKeyConstraint baseColumnNames="adverts_id"
+                                 baseTableName="stock_adverts"
+                                 constraintName="fk_stock_adverts_adverts_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="adverts"/>
+        
+    </changeSet>
+</databaseChangeLog>

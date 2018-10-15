@@ -1,0 +1,56 @@
+{
+    "name": "Supplier",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "surname",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "regNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "active",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "contactInfo",
+            "otherEntityName": "contactInfo",
+            "otherEntityField": "name",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "supplier"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "supplier",
+            "relationshipName": "adverts",
+            "otherEntityName": "adverts",
+            "otherEntityField": "name",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "supplier",
+            "relationshipName": "stock",
+            "otherEntityName": "stock",
+            "otherEntityField": "name",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20181012124128",
+    "entityTableName": "supplier",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

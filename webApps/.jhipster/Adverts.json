@@ -1,0 +1,50 @@
+{
+    "name": "Adverts",
+    "fields": [
+        {
+            "fieldName": "text",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "pricesPerStock",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "units",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "startdate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "endDate",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "supplier",
+            "otherEntityName": "supplier",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "adverts"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "stock",
+            "otherEntityName": "stock",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "adverts"
+        }
+    ],
+    "changelogDate": "20181012124133",
+    "entityTableName": "adverts",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
